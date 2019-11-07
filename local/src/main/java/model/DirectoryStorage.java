@@ -9,6 +9,8 @@ import exceptions.directory.RenameDirectoryExceptions;
 import exceptions.directory.SearchDirectoryExceptions;
 import exceptions.directory.ZipDirectoryExceptions;
 
+
+
 public class DirectoryStorage implements Directory {
 
 	public void create(String name, String path) throws CreateDirectoryExceptions {
@@ -70,5 +72,31 @@ public class DirectoryStorage implements Directory {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void download(String src, String dest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void upload(String src, String dest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void uploadMultiple(List<File> directories, String dest, String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void uploadMultipleZip(List<File> directories, String dest, String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 }
