@@ -31,6 +31,8 @@ public class Main  {
 		// TODO Auto-generated method stub
 		
 		connectionComponent.Connection connection = new Connection();
+		connection.connectToStorage();
+		
 		MyPath myPath= connection.getMyPath();
 		ExtensionList extensionList=connection.getExtension();
 		UserDatabase userDatabase=connection.getUsers();
@@ -38,21 +40,71 @@ public class Main  {
 		model.MyFile myfile= new MyFile();
 		model.MyDirectory myDirectory = new MyDirectory();
 		
-		connection.connectToStorage();
 		
 		
+		Scanner scanner = new Scanner(System.in);
 		
-		System.out.println();
-		try {
-			Files.createDirectory(Paths.get(myPath.getPath()+File.separator+"aaaaa"));
+		
+		//System.out.println(extensionList.getExtensionList());
+		/*
+		while(true) {
+			String extension = scanner.nextLine();
+			extensionList.getExtensionList().add(extension);
+			System.out.println("Da li zelite da unesete jos extension?");
+			Boolean daNe = scanner.nextBoolean();
+			
+			if(!daNe) {
+				break;
+			}
+			if(scanner.hasNext()) {
+				scanner.nextLine();
+				//System.out.println("A"+scanner.nextLine()+"B");
+			}
+			
+		}*/
+		
+		//System.out.println(userLoggedin);
+		//System.out.println(userDatabase.getUsers());
+		/*
+		while(true) {
+			String noviUsername = scanner.nextLine();
+			
+			String novaSifra = scanner.nextLine();
+			Boolean snimanje,brisanje,preuzimanje;
+			
+			snimanje = scanner.nextBoolean();
+			brisanje = scanner.nextBoolean();
+			preuzimanje = scanner.nextBoolean();
+			
+			User noviKorisnik = new User(noviUsername,novaSifra,false,snimanje,brisanje,preuzimanje);
+			userDatabase.getUsers().add(noviKorisnik);
+			
+			
+			System.out.println("Da li zelite da unesete jos korisnika?");
+			Boolean daNe = scanner.nextBoolean();
+			if(!daNe) {
+				break;
+			}
+			if(scanner.hasNext()) {
+				
+				System.out.println("A"+scanner.nextLine()+"B");
+			}
+		}
+		*/
+		
+		
+		System.out.println(myPath.getPath());
+		System.out.println(userLoggedin);
+		/*try {
+			Files.createDirectory(Paths.get(myPath.getPath()+File.separator+"aadd"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 		
-		ArrayList<File> found = new ArrayList<File>(
-				FileUtils.listFilesAndDirs(new File("storageDisk"), new NotFileFilter(TrueFileFilter.INSTANCE), DirectoryFileFilter.DIRECTORY));
+		//ArrayList<File> found = new ArrayList<File>(
+			//	FileUtils.listFilesAndDirs(new File("storageDisk"), new NotFileFilter(TrueFileFilter.INSTANCE), DirectoryFileFilter.DIRECTORY));
 
 		
 		/*System.out.println("Trenutni storage in disk:");
