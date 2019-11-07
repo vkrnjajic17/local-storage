@@ -1,4 +1,4 @@
-package model;
+package modelLocal;
 
 import java.util.List;
 
@@ -12,8 +12,7 @@ import exceptions.file.UploadFileExeption;
 import exceptions.file.ZipFilesExeption;
 import formatComponent.ExtensionList;
 
-
-public class FileStorage implements File {
+public class MyFile implements model.MyFile {
 
 	@Override
 	public void create(String name, String path, ExtensionList extensiontList) throws CreateFileException {
@@ -52,14 +51,14 @@ public class FileStorage implements File {
 	}
 
 	@Override
-	public void uploadMultiple(List<File> files, String pathStorage, ExtensionList extensiontList)
+	public void uploadMultiple(List<model.MyFile> files, String pathStorage, ExtensionList extensiontList)
 			throws UploadFileExeption {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void uploadMultipleZip(List<File> files, String destination) throws Exception {
+	public void uploadMultipleZip(List<model.MyFile> files, String destination) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
@@ -87,6 +86,8 @@ public class FileStorage implements File {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 
 

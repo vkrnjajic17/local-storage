@@ -9,13 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.DirectoryFileFilter;
-import org.apache.commons.io.filefilter.NotFileFilter;
-import org.apache.commons.io.filefilter.TrueFileFilter;
 
-import connectionComponent.Connection;
-import formatComponent.ExtensionHandler;
 import formatComponent.ExtensionList;
 import model.MyPath;
 import users.UsersStorage;
@@ -23,16 +17,16 @@ import usersComponent.HandleUsers;
 import usersComponent.User;
 import usersComponent.UserDatabase;
 
-public class ConectionsStorage implements Connection {
+public class Connection implements connectionComponent.Connection {
 
 	private MyPath myPath;
 	private UserDatabase userDatabase;
 	private ExtensionList extension;
-	private int loginUserNuber;
+	private User userLoggedin;
 	private final String disk = "storageDisk";
 	private HandleUsers handleUsers;
 
-	public ConectionsStorage() {
+	public Connection() {
 		handleUsers = new UsersStorage();
 		this.myPath = new MyPath();
 		this.userDatabase = new UserDatabase();
@@ -138,9 +132,9 @@ public class ConectionsStorage implements Connection {
 	}
 
 	@Override
-	public int getLogin() {
+	public User getLogin() {
 		// TODO Auto-generated method stub
-		return 0;
+		return userLoggedin;
 	}
 
 }

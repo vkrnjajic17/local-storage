@@ -1,4 +1,4 @@
-package model;
+package modelLocal;
 
 import java.util.List;
 
@@ -8,10 +8,11 @@ import exceptions.directory.MoveDirectoryExceptions;
 import exceptions.directory.RenameDirectoryExceptions;
 import exceptions.directory.SearchDirectoryExceptions;
 import exceptions.directory.ZipDirectoryExceptions;
+import model.MyFile;
 
 
 
-public class DirectoryStorage implements Directory {
+public class MyDirectory implements model.MyDirectory {
 
 	public void create(String name, String path) throws CreateDirectoryExceptions {
 		// TODO Auto-generated method stub
@@ -38,37 +39,37 @@ public class DirectoryStorage implements Directory {
 		
 	}
 
-	public List<File> listAllinDirectory(String path) throws SearchDirectoryExceptions {
+	public List<MyFile> listAllinDirectory(String path) throws SearchDirectoryExceptions {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<File> listAllinDirectoryInDirectory(String path) throws SearchDirectoryExceptions {
+	public List<MyFile> listAllinDirectoryInDirectory(String path) throws SearchDirectoryExceptions {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<File> listAllFileinDirectory(String path) throws SearchDirectoryExceptions {
+	public List<MyFile> listAllFileinDirectory(String path) throws SearchDirectoryExceptions {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<File> listAllinDirectoryAndSubdirectory(String path) throws SearchDirectoryExceptions {
+	public List<MyFile> listAllinDirectoryAndSubdirectory(String path) throws SearchDirectoryExceptions {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<File> listAllinDirectoryWithExtension(String path, String extension) throws SearchDirectoryExceptions {
+	public List<MyFile> listAllinDirectoryWithExtension(String path, String extension) throws SearchDirectoryExceptions {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<File> listAllinDirectoryWithMetadata(String path) throws SearchDirectoryExceptions {
+	public List<MyFile> listAllinDirectoryWithMetadata(String path) throws SearchDirectoryExceptions {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<File> listAllinDirectoryWithoutMetadata(String path) throws SearchDirectoryExceptions {
+	public List<MyFile> listAllinDirectoryWithoutMetadata(String path) throws SearchDirectoryExceptions {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -86,13 +87,13 @@ public class DirectoryStorage implements Directory {
 	}
 
 	@Override
-	public void uploadMultiple(List<File> directories, String dest, String name) {
+	public void uploadMultiple(List<MyFile> directories, String dest, String name) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void uploadMultipleZip(List<File> directories, String dest, String name) {
+	public void uploadMultipleZip(List<MyFile> directories, String dest, String name) {
 		// TODO Auto-generated method stub
 		
 	}

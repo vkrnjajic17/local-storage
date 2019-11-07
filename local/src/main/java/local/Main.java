@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import org.apache.commons.io.FileUtils;
@@ -12,21 +13,34 @@ import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.apache.commons.io.filefilter.NotFileFilter;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 
-import connectionComponent.Connection;
+import formatComponent.ExtensionList;
 import model.MyPath;
-import local.ConectionsStorage;
+import modelLocal.MyFile;
+import modelLocal.MyDirectory;
+import usersComponent.User;
+import usersComponent.UserDatabase;
+import local.Connection;
 
 
 public class Main  {
-
+	
 	
 	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Connection connection = new ConectionsStorage();
-		connection.connectToStorage();
+		
+		connectionComponent.Connection connection = new Connection();
 		MyPath myPath= connection.getMyPath();
+		ExtensionList extensionList=connection.getExtension();
+		UserDatabase userDatabase=connection.getUsers();
+		User userLoggedin = connection.getLogin();
+		model.MyFile myfile= new MyFile();
+		model.MyDirectory myDirectory = new MyDirectory();
+		
+		connection.connectToStorage();
+		
+		
 		
 		System.out.println();
 		try {
