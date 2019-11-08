@@ -1,4 +1,4 @@
-package local;
+package storage;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,11 +16,11 @@ import org.apache.commons.io.filefilter.TrueFileFilter;
 import exceptions.file.CreateFileException;
 import formatComponent.ExtensionList;
 import model.MyPath;
-import modelLocal.MyFile;
-import modelLocal.MyDirectory;
+import modelS.MyDirectory;
+import modelS.MyFile;
+import storage.Connection;
 import usersComponent.User;
 import usersComponent.UserDatabase;
-import local.Connection;
 
 
 public class Main  {

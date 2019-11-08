@@ -1,4 +1,4 @@
-package modelLocal;
+package modelS;
 
 import java.io.File;
 import java.io.IOException;

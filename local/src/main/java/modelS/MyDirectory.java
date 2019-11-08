@@ -1,4 +1,4 @@
-package modelLocal;
+package modelS;
 
 import java.util.List;
 
