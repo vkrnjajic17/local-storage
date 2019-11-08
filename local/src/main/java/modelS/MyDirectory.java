@@ -1,6 +1,12 @@
 package modelS;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
+
+import org.apache.commons.io.FileUtils;
 
 import exceptions.directory.CreateDirectoryExceptions;
 import exceptions.directory.DeleteDirectoryExceptions;
@@ -16,11 +22,45 @@ public class MyDirectory implements model.MyDirectory {
 
 	public void create(String name, String path) throws CreateDirectoryExceptions {
 		// TODO Auto-generated method stub
-		
+		if (name.equals("") ) {
+			System.out.println("Ime dir-a nije dobro!!!");
+			return;
+		}
+
+		if (Files.exists(Paths.get(path + File.separator + name))) {
+			System.out.println("Ovakav dir vec postoji");
+			return;
+		}
+		try {
+			Files.createDirectory(Paths.get(path + File.separator + name));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Dir je dobro napravit");
+
 	}
 
 	public void delete(String path) throws DeleteDirectoryExceptions {
 		// TODO Auto-generated method stub
+		if (path.equals("") ) {
+			System.out.println("Ime dir nije dobro!!!");
+			return;
+		}
+		//System.out.println(path);
+		if (!Files.exists(Paths.get(path))) {
+			System.out.println("Ovakav dir ne postoji");
+			return;
+		}
+
+		try {
+			
+			FileUtils.deleteDirectory(new File(path));
+			System.out.println("dir je uspjesno obrisan");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		
 	}
 

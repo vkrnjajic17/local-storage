@@ -44,7 +44,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>local.Main</mainClass>
+							<mainClass>storage.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

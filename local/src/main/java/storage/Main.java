@@ -45,17 +45,40 @@ public class Main  {
 		
 		Scanner scanner = new Scanner(System.in);
 		
+		/*System.out.println("Unesi ime file ");
+		String name =scanner.nextLine();*/
+		
+		System.out.println("Unesi ime path ");
+		String path =scanner.nextLine();
+		myDirectory.delete(path);
+		
+		/*
+		ArrayList<String> lista = new ArrayList<String>();
+		
+		while(true) {
+			String putanja = scanner.nextLine();
+			lista.add(putanja);
+			System.out.println("Da li zelite da unesete jos fajlova?");
+			String daNe = scanner.nextLine();
+			
+			if(daNe.equalsIgnoreCase("ne")) {
+				break;
+			}
+			
+			
+		}
+		
+		
 		
 		System.out.println("Unesi ime file ");
 		String name =scanner.nextLine();
 		
 		
+		System.out.println(lista);
 		
-		System.out.println("Unesi ime destinacije ");
-		String destination =scanner.nextLine();
 		
-		myfile.download(name, destination);
-		
+		myfile.uploadMultipleZip(lista, name);;
+		*/
 		//myfile.create(name, myPath.getTmpPath(), extensionList);
 		
 		//myfile.createWithMetadata(name, myPath.getTmpPath(), extensionList);

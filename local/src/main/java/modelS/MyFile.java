@@ -17,6 +17,7 @@ import exceptions.file.UploadFileExeption;
 import exceptions.file.ZipFilesExeption;
 import formatComponent.ExtensionList;
 import model.MetaCreator;
+import model.Archive;
 
 public class MyFile implements model.MyFile {
 
@@ -31,7 +32,7 @@ public class MyFile implements model.MyFile {
 
 		String extension = name.substring(name.indexOf('.') + 1);// ovo da se ukloni tacka
 
-		System.out.println(extension);
+		//System.out.println(extension);
 		for (int i = 0; i < extensiontList.getExtensionList().size(); i++) {
 			if (extensiontList.getExtensionList().get(i).equals(extension)) {
 				System.out.println("Fajl sa ovom ekstenzijom se ne moze napraviti");
@@ -127,6 +128,52 @@ public class MyFile implements model.MyFile {
 	@Override
 	public void upload(String pathDesktop, String pathStorage, ExtensionList extensiontList) throws UploadFileExeption {
 		// TODO Auto-generated method stub
+		
+		Path source;
+		Path destFile;
+
+		if (pathDesktop != null && !pathDesktop.equals("") ) {
+			source = Paths.get(pathDesktop);
+		} else {
+			System.out.println("Nije dobra putanj fajla sa deskttopa");
+			return;
+		}
+		if (pathStorage != null && !pathStorage.equals("")) {
+			destFile = Paths.get(pathStorage);
+		} else {
+			System.out.println("Putanja destinacije na storage nije dobra");
+			return;
+		}
+		
+		if(!(Files.exists(source) && Files.exists(destFile))) {
+			System.out.println("Ne postoji destinacije");
+			return;	
+		}
+		
+		String extension = pathDesktop.substring(pathDesktop.indexOf('.') + 1);// ovo da se ukloni tacka
+
+		//System.out.println(extension);
+		for (int i = 0; i < extensiontList.getExtensionList().size(); i++) {
+			if (extensiontList.getExtensionList().get(i).equals(extension)) {
+				System.out.println("Fajl sa ovom ekstenzijom se ne moze napraviti");
+				return;
+			}
+
+		}
+		
+		
+		if (Files.exists(Paths.get(pathStorage + File.separator + pathDesktop.substring(pathDesktop.lastIndexOf(File.separator) + 1)))) {
+			System.out.println("Na ovoj putanji postoji isti fajl");
+			return;
+		}
+		
+		try {
+			Files.copy(source, Paths.get(pathStorage + File.separator + pathDesktop.substring(pathDesktop.lastIndexOf(File.separator) + 1)), StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("fajl je prebacen");
 
 	}
 
@@ -167,6 +214,7 @@ public class MyFile implements model.MyFile {
 		}
 		
 		try {
+			
 			Files.move(source, Paths.get(destination + File.separator + pathFile.substring(pathFile.lastIndexOf(File.separator) + 1)), StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -192,6 +240,30 @@ public class MyFile implements model.MyFile {
 	@Override
 	public void rename(String name, String path) throws RenameFileExeption {
 		// TODO Auto-generated method stub
+		Path source;
+		
+		if (path != null && !path.equals("")) {
+			source = Paths.get(path);
+		} else {
+			System.out.println("Putanja destinacije na storage nije dobra");
+			return;
+		}
+		if(!(Files.exists(source))) {
+			System.out.println("Ne postoji destinacije");
+			return;	
+		}
+		if(name == null || name.equals("")) {
+			System.out.println("Ime nije dobro");
+			return;	
+		}
+		try {
+			Files.move(source, source.resolveSibling(name));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("Ime je promjenjeno");
 
 	}
 
@@ -199,12 +271,30 @@ public class MyFile implements model.MyFile {
 	public void uploadMultiple(List<String> files, String pathStorage, ExtensionList extensiontList)
 			throws UploadFileExeption {
 		// TODO Auto-generated method stub
+		for (String s : files) {
+			upload(s, pathStorage, extensiontList);
+		}
 		
 	}
 
 	@Override
 	public void uploadMultipleZip(List<String> files, String destination) throws Exception {
 		// TODO Auto-generated method stub
+		Path path = Paths.get(destination);
+		Archive arhive = new Archive();
+		if (Files.exists(path) && files.size() != 0) {
+			for (String file : files) {
+				try {
+					File f= new File(file);
+					arhive.zipFile(f, f.getName().substring(0, f.getName().lastIndexOf('.')), destination);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			System.out.println("upload to zip je uspjeo" );
+		} else {
+			System.out.println("upload nije uspjeo");
+		}
 		
 	}
 
