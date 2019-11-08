@@ -13,6 +13,7 @@ import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.apache.commons.io.filefilter.NotFileFilter;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 
+import exceptions.file.CreateFileException;
 import formatComponent.ExtensionList;
 import model.MyPath;
 import modelLocal.MyFile;
@@ -27,7 +28,7 @@ public class Main  {
 	
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception   {
 		// TODO Auto-generated method stub
 		
 		connectionComponent.Connection connection = new Connection();
@@ -40,10 +41,30 @@ public class Main  {
 		model.MyFile myfile= new MyFile();
 		model.MyDirectory myDirectory = new MyDirectory();
 		
-		
+		myPath.setTmpPath(myPath.getPath());
 		
 		Scanner scanner = new Scanner(System.in);
 		
+		
+		System.out.println("Unesi ime file ");
+		String name =scanner.nextLine();
+		
+		
+		
+		System.out.println("Unesi ime destinacije ");
+		String destination =scanner.nextLine();
+		
+		myfile.download(name, destination);
+		
+		//myfile.create(name, myPath.getTmpPath(), extensionList);
+		
+		//myfile.createWithMetadata(name, myPath.getTmpPath(), extensionList);
+		//System.out.println(myPath.getPath());
+		//myfile.delete(myPath.getPath()+File.separator+name);
+		/*System.out.println("Unesi ime file ");
+		name =scanner.nextLine();
+		
+		System.out.println(name);*/
 		
 		//System.out.println(extensionList.getExtensionList());
 		/*

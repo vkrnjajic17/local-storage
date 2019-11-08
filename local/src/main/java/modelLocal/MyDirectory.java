@@ -87,16 +87,12 @@ public class MyDirectory implements model.MyDirectory {
 	}
 
 	@Override
-	public void uploadMultiple(List<MyFile> directories, String dest, String name) {
+	public void uploadMultipleZip(List<String> directories, String dest, String name) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void uploadMultipleZip(List<MyFile> directories, String dest, String name) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	
 
